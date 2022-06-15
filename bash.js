@@ -1,5 +1,5 @@
-const ls = require("./ls");
 const pwd = require("./pwd");
+const ls = require("./ls");
 const cat = require("./cat");
 
 process.stdout.write("prompt > ");
@@ -11,13 +11,11 @@ process.stdin.on("data", (data) => {
   if (cmd === "pwd") {
     pwd();
   } else if (cmd === "ls") {
-    ls();
+        ls();
   } else if ( cmd === "cat" ) {
-    cat(fileName);
+        cat(fileName);
+  } else {
+        process.stdout.write(cmd + " not found");
+        process.stdout.write("\nprompt > ");
   }
-  else {
-    process.stdout.write("You typed: " + cmd);
-  }
-
-  process.stdout.write("\nprompt > ");
 });
