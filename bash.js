@@ -1,15 +1,18 @@
-// import {cwd} from 'node:process';
-process.stdout.write('prompt > ');
+const ls = require("./ls");
+const pwd = require("./pwd");
 
-process.stdin.on('data', (data) => {
-    const cmd = data.toString().trim();
+process.stdout.write("prompt > ");
 
-    if (cmd === 'pwd') {
-        process.stdout.write(process.cwd());
-    }else {
-        process.stdout.write('You typed: ' + cmd); 
-    }
+process.stdin.on("data", (data) => {
+  const cmd = data.toString().trim();
 
-   
-    process.stdout.write('\nprompt > ');
+  if (cmd === "pwd") {
+    pwd();
+  } else if (cmd === "ls") {
+    ls();
+  } else {
+    process.stdout.write("You typed: " + cmd);
+  }
+
+  process.stdout.write("\nprompt > ");
 });
