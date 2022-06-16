@@ -2,6 +2,8 @@ const pwd = require("./pwd");
 const ls = require("./ls");
 const cat = require("./cat");
 const curl = require("./curl");
+const date = require ("./date");
+const echo = require("./echo");
 
 process.stdout.write("prompt > ");
 
@@ -17,7 +19,12 @@ process.stdin.on("data", (data) => {
         cat(arg);
   } else if ( cmd === 'curl') {
         curl(arg);
-  } else {
+  } else if ( cmd === 'date') {
+        date();
+  } else if ( cmd === 'echo') {
+        echo(arg);
+  }
+  else {
         process.stdout.write(cmd + " not found");
         process.stdout.write("\nprompt > ");
   }
